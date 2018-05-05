@@ -1,3 +1,22 @@
 /* .eat-button {
     float: left;
 } */
+.jumbotron {
+    color: tan;
+    background-color: brown;
+    text-align: center;
+    border-bottom: maroon ridge 3px;
+}
+
+.container {
+    border: lightsalmon ridge 3px;
+}
+
+.uneaten {
+    background-color: tan;
+    border: maroon ridge 3px;
+};
+
+.b-name {
+    color: green;
+}

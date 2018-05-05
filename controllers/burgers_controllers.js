@@ -4,16 +4,19 @@ var router = express.Router();
 const burger = require("../models/burger");
 
 router.get("/", function(req, res) {
-    burger.selectAll(function(data) {
-        const burgerObject = {
+    res.redirect('/burgers')
+});
+
+router.get('/burgers', function(req, res){
+	burger.selectAll(function(data){
+		var burgerObject = {
             burgers: data
         }
-        res.render("index", burgerObject);
-    })
+		res.render('index', burgerObject);
+	})
 });
 
 router.post("/burgers/add", function(req, res) {
-    console.log(res)
     burger.insertOne([
         //insertOne Columns
         "burger_name", "devoured"
@@ -28,11 +31,10 @@ router.post("/burgers/add", function(req, res) {
         })
 });
 
-router.put("/burgers/update/:id" , function(req, res) {
-    console.log(this.burger_name);
+router.post("/burgers/update/:id" , function(req, res) {
     burger.updateOne([
         //updateOne ObjToVal
-        " devoured = true ", 
+        "devoured = true", 
         ],
         [
         //updateOne Condition
