@@ -8,19 +8,40 @@ router.get("/", function(req, res) {
         const burgerObject = {
             burgers: data
         }
-        console.log(burgerObject);
         res.render("index", burgerObject);
     })
 });
 
-router.post("/api/burgers", function(req, res) {
-    burger.insertOne(function(data) {
-        const burgerObject = {
-            burgers: data
-        }
-        console.log(burgerObject);
-        res.render("index", burgerObject);
-    })
-})
+router.post("/burgers/add", function(req, res) {
+    console.log(res)
+    burger.insertOne([
+        //insertOne Columns
+        "burger_name", "devoured"
+        ],
+        [
+        //insertOne Values
+        req.body.burger_name, false
+        ],
+        //insertOne callback function
+        function() {
+            res.redirect("/");
+        })
+});
+
+router.put("/burgers/update/:id" , function(req, res) {
+    console.log(this.burger_name);
+    burger.updateOne([
+        //updateOne ObjToVal
+        " devoured = true ", 
+        ],
+        [
+        //updateOne Condition
+        "id = " + req.params.id
+        ],
+        //updateOne callback function
+        function() {
+            res.redirect("/");
+        })
+});
 
 module.exports = router;

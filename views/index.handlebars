@@ -1,11 +1,19 @@
-<h1>Cats!</h1>
+<h1>Yummy Burgers!</h1>
 
 <h2>Burgers Yet to be Devoured!</h2>
 
 <ul>
   {{#each burgers}}
     {{#unless devoured}}
-      {{> burgers/burger-block devoured=false}}
+    <li>{{ this.burger_name }} 
+      <form class="form-group eat-button" action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+          <input class="form-control" type="hidden" name="burger_name" value="true">
+          <button type="submit">EAT ME.</button>
+      </form>
+      
+
+    </li>
+      
     {{/unless}}
   {{/each}}
 </ul>
@@ -15,31 +23,32 @@
 <ul>
   {{#each burgers}}
     {{#if devoured}}
-      {{> burgers/burger-block sleep=true}}
+      <li>{{ this.burger_name }}</li>
     {{/if}}
   {{/each}}
 </ul>
 
 <h2>Add a burger</h2>
-<form class="create-form">
+<form class="create-form" action="/burgers/add" method="POST">
 
   <div class="form-group">
-    <label for="burger-name">Cat Name:</label>
-    <input type="text" id="burger-name" name="name">
+    <label for="burger-name">Burger Name:</label>
+    <input type="text" id="add-burger" name="burger_name">
   </div>
 
   <button type="submit">Add Burger</button>
 </form>
-
+<br>
+{{!-- <h1>Devour a Burger!</h1>
 <form id="devourburger" class="button-size">
   <select name="id">
 		{{#each burgers}}
             {{#unless devoured}}
-			    <option value="{{this.id}}">{{this.burger_name}}</option>
+			    <option value="{{this.id}}" >{{this.burger_name}}</option>
             {{/unless}}
 		{{/each}}
 	</select>
-  <textarea type="text" name="devour" placeholder="burger"></textarea>
-  <button type="submit">Devour this Burger!</button>
-</form>
+  {{!-- <textarea type="text" name="devour" placeholder="burger"></textarea> --}}
+  <button type="submit" id="devour-burger">Devour this Burger!</button>
+</form> --}}
 

@@ -30,7 +30,7 @@ function objToSql(ob) {
 
 var orm = {
     selectAll: function(tableName, cb) {
-        const queryString = "SELECT * FROM " + tableName + ";";
+        let queryString = "SELECT * FROM " + tableName + ";";
         connection.query(queryString, function (err, result) {
             if (err) {
                 throw err;
@@ -39,23 +39,23 @@ var orm = {
         })
     },
     insertOne: function(tableName, columns, values, cb) {
-        const queryString = "INSERT INTO " + tableName;
+        let queryString = "INSERT INTO " + tableName;
         queryString += " (";
         queryString += columns.toString();
         queryString += ") ";
         queryString += "VALUES (";
         queryString += printQuestionMarks(values.length);
         queryString += ");";
-        console.log(queryString);
         connection.query(queryString, values, function(err, result) {
             if (err) {
             throw err;
             }
+
             cb(result);
         });
     },
     updateOne: function(tableName, objColVal, condition, cb) {
-        const queryString = "UPDATE "; + tableName;
+        let queryString = "UPDATE "; + tableName;
         queryString += " SET ";
         queryString += objToSql(objColVal);
         queryString += " WHERE ";
