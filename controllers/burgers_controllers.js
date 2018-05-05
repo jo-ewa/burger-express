@@ -27,7 +27,7 @@ router.post("/burgers/add", function(req, res) {
         ],
         //insertOne callback function
         function() {
-            res.redirect("/");
+            res.redirect("/burgers");
         })
 });
 
@@ -42,7 +42,7 @@ router.post("/burgers/update/:id" , function(req, res) {
         ],
         //updateOne callback function
         function() {
-            res.redirect("/");
+            res.redirect("/burgers");
         })
 });
 
