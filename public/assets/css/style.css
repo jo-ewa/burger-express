@@ -8,15 +8,20 @@
     border-bottom: maroon ridge 3px;
 }
 
-.container {
+.main {
     border: lightsalmon ridge 3px;
+    margin-bottom: 25px;
 }
 
-.uneaten {
-    background-color: tan;
-    border: maroon ridge 3px;
+.uneaten, .eaten {
+    border-bottom: maroon ridge 3px;
+    margin-bottom: 20px;
 };
 
 .b-name {
     color: green;
+}
+
+.enter {
+    padding-bottom: 20px;
 }

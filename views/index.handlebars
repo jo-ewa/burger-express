@@ -1,10 +1,11 @@
 <div class="jumbotron"><h1>Yummy Burgers!</h1></div>
 
 <div class="container">
-    <div class="row">
-      <div class="col-md-6 float-left uneaten">
-        <h2>Burgers Yet to be Devoured!</h2>
-
+    <div class="row main">
+      <div class="col-md-6 float-left">
+        <div class="uneaten">
+          <h2>Burgers Yet to be Devoured!</h2>
+        </div>
 
         <ul>
           {{#each burgers}}
@@ -30,8 +31,9 @@
         </ul>
     </div>
       <div class="col-md-6 float-left">
-        <h2>Devoured Burgers!</h2>
-
+        <div class="eaten">
+          <h2>Devoured Burgers!</h2>
+        </div>
         <ul>
           {{#each burgers}}
             {{#if devoured}}
@@ -41,17 +43,21 @@
         </ul>
       </div>
     </div>
+    <div class="row">
+      <div class="col-sm-4 main enter">
+        <h2>Add a burger</h2>
+        <form class="create-form" action="/burgers/add" method="POST">
+
+          <div class="form-group">
+            <label for="burger-name">Burger Name:</label>
+            <input type="text" id="add-burger" name="burger_name">
+          </div>
+          <button type="submit">Add Burger</button>
+        </form>
+      </div>
+    </div>
 </div>
 
-<h2>Add a burger</h2>
-<form class="create-form" action="/burgers/add" method="POST">
 
-  <div class="form-group">
-    <label for="burger-name">Burger Name:</label>
-    <input type="text" id="add-burger" name="burger_name">
-  </div>
-
-  <button type="submit">Add Burger</button>
-</form>
 <br>
 
